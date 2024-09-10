@@ -1,0 +1,29 @@
+name: "Mattermost Server"
+version: "1.0.0"
+slug: "mattermost"
+description: "Mattermost Server for Home Assistant"
+url: "https://github.com/yourusername/ha-addon-mattermost"
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+init: false
+ports:
+  8065/tcp: 8065
+options:
+  postgres_host: core-postgres
+  postgres_port: 5432
+  postgres_database: mattermost
+  postgres_user: mattermost
+  postgres_password: ""
+  domain: ""
+schema:
+  postgres_host: str
+  postgres_port: port
+  postgres_database: str
+  postgres_user: str
+  postgres_password: password
+  domain: str
+webui: "http://[HOST]:[PORT:8065]"
