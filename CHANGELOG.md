@@ -30,6 +30,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - N/A (Initial release)
 
+## [0.2.2] - 2024-12-19
+
+### Fixed
+- Replace complex source build with reliable pre-built binary download
+- Fix "make build-linux" error by using official Mattermost releases
+- Simplify Dockerfile to avoid build system complications
+- Improve build reliability across all architectures
+- Faster installation time by avoiding compilation
+
+### Changed
+- Switch from source compilation to pre-built binary approach
+- Streamlined Dockerfile for better maintainability
+- Updated architecture mapping for official Mattermost releases
+
 ## [0.2.1] - 2024-12-19
 
 ### Fixed
