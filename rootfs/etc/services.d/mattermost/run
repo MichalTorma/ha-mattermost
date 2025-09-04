@@ -4,12 +4,18 @@
 # Runs the Mattermost server
 # ==============================================================================
 
-declare -a options
-
 bashio::log.info "Starting Mattermost server..."
+
+# Ensure proper ownership of mattermost directories
+chown -R mattermost:mattermost /mattermost
 
 # Change to mattermost directory
 cd /mattermost || bashio::exit.nok "Could not change to Mattermost directory"
 
-# Execute Mattermost
-exec s6-setuidgid mattermost /mattermost/server/bin/mattermost
+# Set environment variables
+export MM_SERVICESETTINGS_SITEURL=""
+export MM_LOGSETTINGS_ENABLECONSOLE=true
+export MM_LOGSETTINGS_CONSOLELEVEL=INFO
+
+# Execute Mattermost directly (running as root is fine for Home Assistant addons)
+exec /mattermost/server/bin/mattermost

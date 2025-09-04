@@ -93,10 +93,7 @@ LABEL \
 # Expose port
 EXPOSE 8065
 
-# Switch to mattermost user
-USER mattermost
-
-# Set working directory
+# Set working directory (run as root, service script will switch user)
 WORKDIR /mattermost
 
 # Health check

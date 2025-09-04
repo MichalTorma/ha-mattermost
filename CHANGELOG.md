@@ -30,6 +30,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - N/A (Initial release)
 
+## [0.2.3] - 2024-12-19
+
+### Fixed
+- Fix "Operation not permitted" error during startup
+- Remove problematic s6-setuidgid user switching that conflicts with HA security
+- Simplify service script to run Mattermost directly as root (standard for HA addons)
+- Ensure proper directory ownership before startup
+
 ## [0.2.2] - 2024-12-19
 
 ### Fixed
