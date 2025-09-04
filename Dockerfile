@@ -41,15 +41,27 @@ RUN \
     && DOWNLOAD_URL="https://releases.mattermost.com/${MATTERMOST_VERSION}/mattermost-${MATTERMOST_VERSION}-linux-${ARCH_NAME}.tar.gz" \
     && echo "Downloading Mattermost ${MATTERMOST_VERSION} for ${ARCH_NAME} from: ${DOWNLOAD_URL}" \
     && curl -fsSL "${DOWNLOAD_URL}" -o mattermost.tar.gz \
-    && tar -xzf mattermost.tar.gz -C /opt \
-    && mv /opt/mattermost /mattermost/server \
-    && rm -f mattermost.tar.gz
+    && tar -xzf mattermost.tar.gz -C /tmp \
+    && mv /tmp/mattermost/bin /mattermost/server/bin \
+    && mv /tmp/mattermost/logs /mattermost/logs \
+    && mv /tmp/mattermost/plugins /mattermost/plugins \
+    && mv /tmp/mattermost/client /mattermost/client \
+    && mv /tmp/mattermost/config /mattermost/server/config \
+    && mv /tmp/mattermost/fonts /mattermost/server/fonts \
+    && mv /tmp/mattermost/i18n /mattermost/server/i18n \
+    && mv /tmp/mattermost/templates /mattermost/server/templates \
+    && rm -rf /tmp/mattermost mattermost.tar.gz
 
-# Verify the binary exists and is executable
+# Verify the binary and client files exist
 RUN \
     if [ ! -f "/mattermost/server/bin/mattermost" ]; then \
         echo "ERROR: Mattermost binary not found at /mattermost/server/bin/mattermost" \
         && ls -la /mattermost/server/bin/ \
+        && exit 1; \
+    fi \
+    && if [ ! -f "/mattermost/client/root.html" ]; then \
+        echo "ERROR: Mattermost client files not found at /mattermost/client/" \
+        && ls -la /mattermost/client/ \
         && exit 1; \
     fi \
     && chmod +x /mattermost/server/bin/mattermost

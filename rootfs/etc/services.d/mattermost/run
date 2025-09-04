@@ -12,8 +12,19 @@ chown -R mattermost:mattermost /mattermost
 # Change to mattermost directory
 cd /mattermost || bashio::exit.nok "Could not change to Mattermost directory"
 
-# Set environment variables
-export MM_SERVICESETTINGS_SITEURL=""
+# Get configuration values
+SITE_URL=$(bashio::config 'site_url')
+
+# Set environment variables for Mattermost
+if bashio::var.has_value "${SITE_URL}"; then
+    export MM_SERVICESETTINGS_SITEURL="${SITE_URL}"
+    bashio::log.info "Site URL configured: ${SITE_URL}"
+else
+    # Set a default site URL if none is configured
+    export MM_SERVICESETTINGS_SITEURL="http://homeassistant.local:8065"
+    bashio::log.warning "No site URL configured, using default: http://homeassistant.local:8065"
+fi
+
 export MM_LOGSETTINGS_ENABLECONSOLE=true
 export MM_LOGSETTINGS_CONSOLELEVEL=INFO
 

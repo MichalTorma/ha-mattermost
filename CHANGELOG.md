@@ -30,6 +30,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - N/A (Initial release)
 
+## [0.2.4] - 2024-12-19
+
+### Fixed
+- Fix missing client files error (root.html not found)
+- Proper directory structure for Mattermost installation
+- Move client files to correct /mattermost/client/ location
+- Set default SiteURL when none configured to avoid errors
+- Environment variable override for runtime SiteURL configuration
+- Verify both server binary and client files during build
+
+### Changed
+- Improved file structure organization in Dockerfile
+- Enhanced service script with SiteURL configuration from addon settings
+- Added fallback SiteURL for better user experience
+
 ## [0.2.3] - 2024-12-19
 
 ### Fixed
