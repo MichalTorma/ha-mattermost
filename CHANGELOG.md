@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Initial release of Mattermost Home Assistant Add-on
-- Support for AMD64 architecture
+- Support for multiple architectures (aarch64, amd64, armhf, armv7, i386)
+- Cross-compilation support for ARM and x86 architectures
 - PostgreSQL and MySQL database support
 - Email notification configuration
 - Comprehensive configuration options
@@ -28,6 +29,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 - N/A (Initial release)
+
+## [0.2.0] - 2024-12-19
+
+### Added
+- Multi-architecture support (aarch64, amd64, armhf, armv7, i386)
+- Cross-compilation capabilities for ARM and x86 architectures
+- Intelligent build fallback system for ARM architectures
+- Architecture-specific Go compilation settings
+
+### Changed
+- Updated Dockerfile to handle multi-architecture builds
+- Enhanced build.yaml with all supported Home Assistant architectures
+- Improved documentation with architecture support badges
 
 ## [0.1.0] - 2024-12-19
 
@@ -51,6 +65,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Configuration examples
   - Troubleshooting guide
   - Security considerations
-- Build configuration for AMD64 architecture
+- Build configuration for multiple architectures (aarch64, amd64, armhf, armv7, i386)
+- Intelligent fallback to pre-built binaries for ARM architectures when needed
 - Proper file and directory permissions
 - Standard Home Assistant Add-on file structure
