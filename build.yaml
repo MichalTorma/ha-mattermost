@@ -11,4 +11,4 @@ labels:
   org.opencontainers.image.licenses: "MIT"
   org.opencontainers.image.documentation: "https://github.com/MichalTorma/ha-mattermost/blob/main/README.md"
 args:
-  MATTERMOST_VERSION: "9.11.0"
+  MATTERMOST_VERSION: "10.11.2"
