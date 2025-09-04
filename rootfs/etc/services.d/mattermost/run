@@ -1,0 +1,15 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Home Assistant Community Add-on: Mattermost
+# Runs the Mattermost server
+# ==============================================================================
+
+declare -a options
+
+bashio::log.info "Starting Mattermost server..."
+
+# Change to mattermost directory
+cd /mattermost || bashio::exit.nok "Could not change to Mattermost directory"
+
+# Execute Mattermost
+exec s6-setuidgid mattermost /mattermost/server/bin/mattermost

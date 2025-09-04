@@ -1,29 +1,58 @@
 name: "Mattermost Server"
-version: "1.0.0"
+description: "Mattermost team communication platform for Home Assistant"
+version: "0.1.0"
 slug: "mattermost"
-description: "Mattermost Server for Home Assistant"
-url: "https://github.com/yourusername/ha-addon-mattermost"
 arch:
-  - aarch64
   - amd64
-  - armhf
-  - armv7
-  - i386
 init: false
+startup: application
+boot: manual
+hassio_api: true
+hassio_role: default
+host_network: false
+privileged:
+  - NET_ADMIN
 ports:
   8065/tcp: 8065
+ports_description:
+  8065/tcp: "Mattermost Web Interface"
+map:
+  - config:rw
+  - ssl:ro
+  - media:rw
 options:
-  postgres_host: core-postgres
-  postgres_port: 5432
-  postgres_database: mattermost
-  postgres_user: mattermost
-  postgres_password: ""
-  domain: ""
+  database_type: "postgres"
+  database_host: "core-postgres"
+  database_port: 5432
+  database_name: "mattermost"
+  database_user: "mattermost"
+  database_password: ""
+  site_url: ""
+  enable_email: false
+  smtp_server: ""
+  smtp_port: 587
+  smtp_username: ""
+  smtp_password: ""
+  smtp_enable_security: true
+  admin_email: ""
+  team_name: "Home Assistant Team"
+  log_level: "INFO"
 schema:
-  postgres_host: str
-  postgres_port: port
-  postgres_database: str
-  postgres_user: str
-  postgres_password: password
-  domain: str
+  database_type: "list(postgres|mysql)"
+  database_host: "str"
+  database_port: "port"
+  database_name: "str"
+  database_user: "str"
+  database_password: "password"
+  site_url: "url?"
+  enable_email: "bool"
+  smtp_server: "str?"
+  smtp_port: "port?"
+  smtp_username: "str?"
+  smtp_password: "password?"
+  smtp_enable_security: "bool"
+  admin_email: "email?"
+  team_name: "str"
+  log_level: "list(DEBUG|INFO|WARN|ERROR)"
 webui: "http://[HOST]:[PORT:8065]"
+image: "ghcr.io/michaltorma/ha-mattermost-{arch}"

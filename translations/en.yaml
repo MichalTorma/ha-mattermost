@@ -1,0 +1,50 @@
+---
+configuration:
+  database_type:
+    name: Database Type
+    description: Type of database to use (postgres or mysql)
+  database_host:
+    name: Database Host
+    description: Hostname of the database server
+  database_port:
+    name: Database Port
+    description: Port number of the database server
+  database_name:
+    name: Database Name
+    description: Name of the database for Mattermost
+  database_user:
+    name: Database User
+    description: Username for database connection
+  database_password:
+    name: Database Password
+    description: Password for database connection
+  site_url:
+    name: Site URL
+    description: Full URL where Mattermost will be accessible
+  enable_email:
+    name: Enable Email
+    description: Enable email notifications
+  smtp_server:
+    name: SMTP Server
+    description: SMTP server hostname for sending emails
+  smtp_port:
+    name: SMTP Port
+    description: SMTP server port
+  smtp_username:
+    name: SMTP Username
+    description: Username for SMTP authentication
+  smtp_password:
+    name: SMTP Password
+    description: Password for SMTP authentication
+  smtp_enable_security:
+    name: SMTP Security
+    description: Enable TLS/SSL security for SMTP
+  admin_email:
+    name: Admin Email
+    description: Email address of the system administrator
+  team_name:
+    name: Team Name
+    description: Name of your team or organization
+  log_level:
+    name: Log Level
+    description: Set the logging level (DEBUG, INFO, WARN, ERROR)
