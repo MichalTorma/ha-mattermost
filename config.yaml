@@ -1,6 +1,6 @@
 name: "Mattermost Server"
 description: "Mattermost team communication platform for Home Assistant"
-version: "0.2.0"
+version: "0.2.1"
 slug: "mattermost"
 arch:
   - aarch64

@@ -30,6 +30,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - N/A (Initial release)
 
+## [0.2.1] - 2024-12-19
+
+### Fixed
+- Remove pre-built image reference from config.yaml to fix installation
+- Addon now builds locally from source using Hassio base images
+- Resolves 403 Forbidden error during installation
+
 ## [0.2.0] - 2024-12-19
 
 ### Added
