@@ -59,4 +59,3 @@ schema:
   team_name: "str"
   log_level: "list(DEBUG|INFO|WARN|ERROR)"
 webui: "http://[HOST]:[PORT:8065]"
-image: "ghcr.io/michaltorma/ha-mattermost-{arch}"
