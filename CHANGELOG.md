@@ -30,6 +30,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - N/A (Initial release)
 
+## [0.2.5] - 2024-12-19
+
+### Fixed
+- Fix directory structure extraction error ("can't rename '/tmp/mattermost/bin'")
+- Improve handling of Mattermost archive extraction for different architectures
+- Add debug logging to understand archive structure during build
+- Use copy and reorganize approach instead of direct move operations
+- Better error handling for missing directories in archive
+
 ## [0.2.4] - 2024-12-19
 
 ### Fixed

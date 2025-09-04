@@ -42,14 +42,17 @@ RUN \
     && echo "Downloading Mattermost ${MATTERMOST_VERSION} for ${ARCH_NAME} from: ${DOWNLOAD_URL}" \
     && curl -fsSL "${DOWNLOAD_URL}" -o mattermost.tar.gz \
     && tar -xzf mattermost.tar.gz -C /tmp \
-    && mv /tmp/mattermost/bin /mattermost/server/bin \
-    && mv /tmp/mattermost/logs /mattermost/logs \
-    && mv /tmp/mattermost/plugins /mattermost/plugins \
-    && mv /tmp/mattermost/client /mattermost/client \
-    && mv /tmp/mattermost/config /mattermost/server/config \
-    && mv /tmp/mattermost/fonts /mattermost/server/fonts \
-    && mv /tmp/mattermost/i18n /mattermost/server/i18n \
-    && mv /tmp/mattermost/templates /mattermost/server/templates \
+    && echo "DEBUG: Contents of /tmp after extraction:" \
+    && ls -la /tmp/ \
+    && echo "DEBUG: Contents of extracted mattermost directory:" \
+    && ls -la /tmp/mattermost/ \
+    && mkdir -p /mattermost/server/bin \
+    && cp -r /tmp/mattermost/* /mattermost/server/ \
+    && mkdir -p /mattermost/client \
+    && if [ -d "/mattermost/server/client" ]; then \
+        mv /mattermost/server/client/* /mattermost/client/ && rmdir /mattermost/server/client; \
+    fi \
+    && mkdir -p /mattermost/logs /mattermost/plugins \
     && rm -rf /tmp/mattermost mattermost.tar.gz
 
 # Verify the binary and client files exist
