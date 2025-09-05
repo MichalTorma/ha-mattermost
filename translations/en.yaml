@@ -48,3 +48,6 @@ configuration:
   log_level:
     name: Log Level
     description: Set the logging level (DEBUG, INFO, WARN, ERROR)
+  enable_plugin_uploads:
+    name: Enable Plugin Uploads
+    description: Allow users to upload custom plugins to Mattermost

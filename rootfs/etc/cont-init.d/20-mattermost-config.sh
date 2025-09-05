@@ -35,6 +35,7 @@ SMTP_ENABLE_SECURITY=$(bashio::config 'smtp_enable_security')
 ADMIN_EMAIL=$(bashio::config 'admin_email')
 TEAM_NAME=$(bashio::config 'team_name')
 LOG_LEVEL=$(bashio::config 'log_level')
+ENABLE_PLUGIN_UPLOADS=$(bashio::config 'enable_plugin_uploads')
 
 # Build database connection string
 if [[ "${DATABASE_TYPE}" == "postgres" ]]; then
@@ -99,8 +100,16 @@ jq '.FileSettings.Directory = "/mattermost/data" |
    "${CONFIG_FILE}" > "${CONFIG_FILE}.tmp" && mv "${CONFIG_FILE}.tmp" "${CONFIG_FILE}"
 
 # Plugin settings
-jq '.PluginSettings.Directory = "/mattermost/plugins" | 
-    .PluginSettings.ClientDirectory = "/mattermost/client/plugins"' \
+jq --argjson enable_uploads "${ENABLE_PLUGIN_UPLOADS}" \
+   '.PluginSettings.Directory = "/mattermost/plugins" | 
+    .PluginSettings.ClientDirectory = "/mattermost/client/plugins" |
+    .PluginSettings.Enable = true |
+    .PluginSettings.EnableUploads = $enable_uploads |
+    .PluginSettings.AllowInsecureDownloadUrl = false |
+    .PluginSettings.EnableHealthCheck = true |
+    .PluginSettings.EnableMarketplace = true |
+    .PluginSettings.EnableRemoteMarketplace = true |
+    .PluginSettings.AutomaticPrepackagedPlugins = true' \
    "${CONFIG_FILE}" > "${CONFIG_FILE}.tmp" && mv "${CONFIG_FILE}.tmp" "${CONFIG_FILE}"
 
 # Ensure proper permissions

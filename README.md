@@ -58,6 +58,7 @@ smtp_enable_security: true
 admin_email: ""
 team_name: "Home Assistant Team"
 log_level: "INFO"
+enable_plugin_uploads: true
 ```
 
 ### Option: `database_type` (required)
@@ -123,6 +124,10 @@ Name of your team/organization. Default is "Home Assistant Team".
 ### Option: `log_level` (optional)
 
 Set the log level. Options: `DEBUG`, `INFO`, `WARN`, `ERROR`. Default is `INFO`.
+
+### Option: `enable_plugin_uploads` (optional)
+
+Allow users to upload custom plugins to Mattermost. Default is `true`. When enabled, administrators can upload custom plugins through the System Console.
 
 ## Support
 

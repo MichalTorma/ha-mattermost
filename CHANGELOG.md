@@ -30,6 +30,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - N/A (Initial release)
 
+## [0.2.6] - 2024-12-19
+
+### Added
+- Enable plugin uploads by default for custom plugin installation
+- New configuration option `enable_plugin_uploads` to control plugin uploads
+- Enhanced plugin settings with marketplace and health check features
+- Comprehensive plugin configuration for full functionality
+
+### Fixed
+- Fix "Enable plugin uploads in config.json" error in System Console
+- Enable plugin marketplace and remote marketplace access
+- Proper plugin directory permissions and settings
+
 ## [0.2.5] - 2024-12-19
 
 ### Fixed

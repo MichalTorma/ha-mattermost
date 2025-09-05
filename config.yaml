@@ -1,6 +1,6 @@
 name: "Mattermost Server"
 description: "Mattermost team communication platform for Home Assistant"
-version: "0.2.5"
+version: "0.2.6"
 slug: "mattermost"
 arch:
   - aarch64
@@ -41,6 +41,7 @@ options:
   admin_email: ""
   team_name: "Home Assistant Team"
   log_level: "INFO"
+  enable_plugin_uploads: true
 schema:
   database_type: "list(postgres|mysql)"
   database_host: "str"
@@ -58,4 +59,5 @@ schema:
   admin_email: "email?"
   team_name: "str"
   log_level: "list(DEBUG|INFO|WARN|ERROR)"
+  enable_plugin_uploads: "bool"
 webui: "http://[HOST]:[PORT:8065]"
